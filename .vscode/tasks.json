@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "C/C++: clang++ build active file",
+      "label": "Build active C++ file",
       "type": "shell",
       "command": "clang++",
       "args": [
@@ -13,8 +13,15 @@
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
       "group": "build",
-      "problemMatcher": ["$gcc"],
-      "detail": "Build active C++ file"
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Run (integrated terminal)",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}",
+      "dependsOn": "Build active C++ file",
+      "options": { "cwd": "${fileDirname}" },
+      "problemMatcher": []
     }
   ]
 }
