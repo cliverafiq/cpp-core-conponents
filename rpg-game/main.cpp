@@ -9,5 +9,6 @@ int main()
 
     cout << "Enter your player name: ";
     cin >> playerName;
-    
+
+    string test;
 }
