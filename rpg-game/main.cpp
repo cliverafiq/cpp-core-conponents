@@ -10,5 +10,7 @@ int main()
     cout << "Enter your player name: ";
     cin >> playerName;
 
-    string test;
+    cout <<"Welcome, "<< playerName <<"!"<< endl;
+    cout <<"You have "<< health <<" HP and "<< attack <<" attack damage"<<endl;
+    return 0;
 }

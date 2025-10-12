@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/cliverafiq/dev/cpp-core-conponents/rpg-game/main'
+relocations:     []
+...

@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "C/C++: clang++ build active file",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "-std=c++17",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "Build active C++ file"
+    }
+  ]
+}
