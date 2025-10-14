@@ -1,55 +1,68 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    string playerName;
-    int playerHealth = 100;
-    int playerAttack = 15;
+struct Player {
+    string name;
+    int health;
+    int attack;
+};
 
-    cout << "Enter your player name: ";
-    cin >> playerName;
+struct Enemy {
+    string name;
+    int health;
+    int attack;
+};
 
-    cout <<"Welcome, "<< playerName <<"!"<< endl;
-    cout <<"You have "<< playerHealth <<" HP and "<< playerAttack <<" attack damage"<<endl;
+void fight(Player &player, Enemy &enemy) {
+    cout << "\nA wild " << enemy.name << " appears!\n";
 
-    cout <<"A Wild goblins has appeared!";
-    int enemyHealth = 50;
-    int enemyAttack = 10;
-
-    while (playerHealth > 0 && enemyHealth > 0) 
-    {
+    while (player.health > 0 && enemy.health > 0) {
         cout << "\nChoose action: [1] Attack [2] Run\n> ";
         int choice;
         cin >> choice;
 
-        if (choice == 1) 
-        {
-            cout << "You attack the Goblin!\n";
-            enemyHealth -= playerAttack;
-            cout << "Goblin HP: " << enemyHealth << "\n";
+        if (choice == 1) {
+            cout << "You attack the " << enemy.name << "!\n";
+            enemy.health -= player.attack;
+            cout << enemy.name << " HP: " << enemy.health << "\n";
 
-            if (enemyHealth <= 0) break;
+            if (enemy.health <= 0) break;
 
-            cout << "Goblin attacks you!\n";
-            playerHealth -= enemyAttack;
-            cout << "Your HP: " << playerHealth << "\n";
-        } 
-        else if (choice == 2) 
-        {
+            cout << enemy.name << " attacks you!\n";
+            player.health -= enemy.attack;
+            cout << "Your HP: " << player.health << "\n";
+        } else if (choice == 2) {
             cout << "You ran away!\n";
             break;
-        } 
-        else 
-        {
+        } else {
             cout << "Invalid choice!\n";
         }
     }
 
-    if (playerHealth <= 0)
+    if (player.health <= 0)
         cout << "\nYou were defeated!\n";
-    else if (enemyHealth <= 0)
-        cout << "\nYou defeated the Goblin!\n";
+    else if (enemy.health <= 0)
+        cout << "\nYou defeated the " << enemy.name << "!\n";
+}
+
+int main()
+{
+    Player player;
+
+    cout << "Enter your player name: ";
+    cin >> player.name;
+
+    cout <<"Welcome, "<< player.name <<"!"<< endl;
+    cout <<"You have "<< player.name <<" HP and "<< player.attack <<" attack damage"<<endl;
+
+    Enemy goblin;
+    goblin.name = "Goblin";
+    goblin.health = 50;
+    goblin.attack = 10;
+
+    fight(player, goblin);
+
+    cout << "\nGame over!\n";
 
     return 0;
 }
